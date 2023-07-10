@@ -6,5 +6,25 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'calculadora';
+  display: string = '';
+  //Numeros
+  appendNumber(number: number) {
+    this.display += number.toString();
+  }
+  //Operaciones
+  appendOperator(operator: string) {
+    this.display += operator;
+  }
+  //Calcular operacion insertada
+  calculate() {
+    try {
+      this.display = eval(this.display);
+    } catch (error) {
+      this.display = 'Error';
+    }
+  }
+  //Limpiar
+  clear() {
+    this.display = '';
+  }
 }
